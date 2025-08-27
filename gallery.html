@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="gallery.css">
+    <title>Photography Portfolio | Gallery</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <button class="go-back-btn" onclick="goBack()">
+        <div class="arrow"></div>
+        Back
+    </button>
+
+    <div class="container">
+        <div class="header">
+            <h1>PHOTOGRAPHY</h1>
+            <p>Capturing moments, creating memories</p>
+        </div>
+
+        <div class="gallery">
+            <div class="photo-item" onclick="openLightbox('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=800&fit=crop&crop=center')">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop&crop=center" alt="Mountain Landscape">
+                <div class="photo-overlay">
+                    <div class="photo-title">Mountain Vista</div>
+                    <div class="photo-category">Landscape</div>
+                </div>
+            </div>
+
+            <div class="photo-item" onclick="openLightbox('https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&h=800&fit=crop&crop=center')">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop&crop=center" alt="Portrait Photography">
+                <div class="photo-overlay">
+                    <div class="photo-title">Golden Hour</div>
+                    <div class="photo-category">Portrait</div>
+                </div>
+            </div>
+
+            <div class="photo-item" onclick="openLightbox('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=800&fit=crop&crop=center')">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=400&h=400&fit=crop&crop=center" alt="Ocean Waves">
+                <div class="photo-overlay">
+                    <div class="photo-title">Ocean Dreams</div>
+                    <div class="photo-category">Seascape</div>
+                </div>
+            </div>
+
+            <div class="photo-item" onclick="openLightbox('https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=800&h=800&fit=crop&crop=center')">
+                <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=400&h=400&fit=crop&crop=center" alt="City Architecture">
+                <div class="photo-overlay">
+                    <div class="photo-title">Urban Lines</div>
+                    <div class="photo-category">Architecture</div>
+                </div>
+            </div>
+
+            <div class="photo-item" onclick="openLightbox('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=800&fit=crop&crop=center')">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=400&fit=crop&crop=center" alt="Forest Path">
+                <div class="photo-overlay">
+                    <div class="photo-title">Forest Path</div>
+                    <div class="photo-category">Nature</div>
+                </div>
+            </div>
+
+            <div class="photo-item" onclick="openLightbox('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&h=800&fit=crop&crop=center')">
+                <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&h=400&fit=crop&crop=center" alt="Desert Landscape">
+                <div class="photo-overlay">
+                    <div class="photo-title">Desert Solitude</div>
+                    <div class="photo-category">Landscape</div>
+                </div>
+            </div>
+
+            <div class="photo-item" onclick="openLightbox('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&h=800&fit=crop&crop=center')">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=400&fit=crop&crop=center" alt="Night Sky">
+                <div class="photo-overlay">
+                    <div class="photo-title">Starry Night</div>
+                    <div class="photo-category">Astrophotography</div>
+                </div>
+            </div>
+
+            <div class="photo-item" onclick="openLightbox('https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=800&fit=crop&crop=center')">
+                <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=400&fit=crop&crop=center" alt="Wildlife Photography">
+                <div class="photo-overlay">
+                    <div class="photo-title">Wild Spirit</div>
+                    <div class="photo-category">Wildlife</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Lightbox Image">
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Prevent lightbox from closing when clicking on the image
+        document.querySelector('.lightbox-content').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Add smooth scroll behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        function goBack(){
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+    </script>
+</body>
+</html>
